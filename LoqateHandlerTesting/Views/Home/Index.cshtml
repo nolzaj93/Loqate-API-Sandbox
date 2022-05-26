@@ -1,31 +1,58 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+<main>
+    <div id="defaultautocomplete">
+        <h2>API Sandbox</h2>
+        <h4><a href='https://www.loqate.com/resources/support/apis/Capture/Interactive/Find/1.1/'>Find - returns suggestions based on input</a></h4>
+        <h4><a href='https://www.loqate.com/resources/support/apis/Capture/Interactive/Retrieve/1.2/'>Retrieve - returns validated address on click</a></h4>
+        <form id="addressform" autocomplete="on">
+            <label for="address1">Address 1:</label><br>
+            <input type="text" id="address1" name="address1" placeholder="Start typing here"><br>
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+            <label for="address2">Address 2:</label><br>
+            <input type="text" id="address2" name="address2"><br>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+            <label for="town_city">City:</label><br>
+            <input type="text" id="town_city" name="town_city"><br>
+
+            <label for="state">State:</label><br>
+            <input type="text" id="state" name="state"><br>
+
+            <label for="zip_postal_code">Zip/Postal Code:</label><br>
+            <input type="text" id="zip_postal_code" name="zip_postal_code"><br>
+
+            <label for="country">Country:</label><br>
+            <input type="text" id="country" name="country"><br>
+        </form>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+
+    <div id="sandbox">
+        <h2><a href="https://www.loqate.com/resources/support/sandbox/" target="_blank">Sandbox Test Environment</a></h2>
+
+        <div class="content">
+            <div class="fieldWrap">
+                <input type="text" name="search" class="searchInput" id="searchBox" placeholder="Enter Address" onchange="showClear()" onkeypress="return enterSearch(event)">
+                <button onClick="findAddress()">Search</button>
+                <div class="clear" id="clearButton" onClick="clearSearch()">X</div>
+            </div>
+
+            <div class="fieldWrap">
+                <div class="error" id="errorMessage"></div>
+            </div>
+
+            <div class="fieldWrap">
+                <div id="result"></div>
+            </div>
+
+            <div class="seperator" id="seperator"></div>
+
+            <div class="fieldWrap">
+                <div class="outputArea" id="output"></div>
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+    @section scripts{
+        <script type="text/javascript" src="/Scripts/Loqate.js"></script>
+    }
+</main>
